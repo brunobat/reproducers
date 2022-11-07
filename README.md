@@ -1,2 +1,2 @@
-# reproducers
-Reproducer projects for Bugs and other issues
+# Quarkus Reproducers
+Quarkus Reproducer projects for Bugs and other issues
