@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>graalvm-aws-rest-26250</artifactId>
+    <artifactId>reactive-db-metrics</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -20,32 +20,50 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-arc</artifactId>
+            <artifactId>quarkus-hibernate-reactive</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.quarkus</groupId>-->
-<!--            <artifactId>quarkus-rest-client</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-agroal</artifactId>
+        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-opentelemetry-exporter-otlp</artifactId>
+            <artifactId>quarkus-reactive-pg-client</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-amazon-lambda-rest</artifactId>
+            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-arc</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -54,7 +72,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -102,8 +119,7 @@
                         </goals>
                         <configuration>
                             <systemPropertyVariables>
-                                <native.image.path>${project.build.directory}/${project.build.finalName}-runner
-                                </native.image.path>
+                                <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                                 <maven.home>${maven.home}</maven.home>
                             </systemPropertyVariables>
