@@ -14,6 +14,9 @@
         <module>reactive-db-metrics</module>
         <module>orm-metrics</module>
         <module>b3-context-propagation</module>
+        <module>observation</module>
+        <module>service-name</module>
+        <module>Oom</module>
     </modules>
 
     <properties>
