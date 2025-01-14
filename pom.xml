@@ -17,6 +17,7 @@
         <module>observation</module>
         <module>service-name</module>
         <module>Oom</module>
+        <module>chain-build-exception</module>
     </modules>
 
     <properties>
